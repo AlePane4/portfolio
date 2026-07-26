@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Store Performance Scoring — Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="../index.html">Alessio Panetta</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="proj-header">
+  <div class="wrap">
+    <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#projects">Projects</a> / Store performance</p>
+    <p class="eyebrow">Retail Ops · Store Performance</p>
+    <h1>A composite scoring system to rank stores across a grocery network</h1>
+    <p class="proj-summary">
+      For a large grocery chain, store performance was judged almost only on sales —
+      ignoring customer satisfaction and operational quality. I designed a scoring
+      framework across three KPI areas, where each KPI is converted into points via
+      thresholds and the total score produces a transparent network-wide ranking.
+    </p>
+    <div class="proj-meta">
+      <div class="meta-item">
+        <div class="fact-k">Scope</div>
+        <div class="fact-v">180+ stores · monthly refresh</div>
+      </div>
+      <div class="meta-item">
+        <div class="fact-k">Methods</div>
+        <div class="fact-v">KPI design · threshold scoring · composite ranking</div>
+      </div>
+      <div class="meta-item">
+        <div class="fact-k">Stack</div>
+        <div class="fact-v">SQL · Python · Power BI</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="proj-section">
+  <div class="wrap">
+    <h2>The framework — three KPI areas</h2>
+    <p class="lede">The core idea: a great store is not just a store that sells.
+    The score balances what customers feel, what the store earns, and how well the
+    team runs it. Weights were agreed with operations leadership.</p>
+    <div class="kpi-areas">
+      <div class="kpi-area">
+        <p class="w">Weight 30%</p>
+        <h3>Customer satisfaction</h3>
+        <ul>
+          <li>NPS (post-visit surveys)</li>
+          <li>Google reviews rating</li>
+          <li>Complaint rate per 1k tickets</li>
+          <li>Mystery shopper score</li>
+        </ul>
+      </div>
+      <div class="kpi-area">
+        <p class="w">Weight 40%</p>
+        <h3>Economic performance</h3>
+        <ul>
+          <li>Sales vs target</li>
+          <li>Sales growth YoY (like-for-like)</li>
+          <li>Sales by department vs plan</li>
+          <li>Shrinkage &amp; waste rate</li>
+        </ul>
+      </div>
+      <div class="kpi-area">
+        <p class="w">Weight 30%</p>
+        <h3>Know-how &amp; operations</h3>
+        <ul>
+          <li>Product knowledge assessment</li>
+          <li>Internal audit score</li>
+          <li>Inspection / compliance checks</li>
+          <li>Planogram &amp; availability checks</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub">From KPI to points — threshold example</h3>
+    <p class="lede">Each KPI maps to 0–3 points through thresholds, so different units
+    (an NPS, a %, an audit grade) become comparable. Example for two KPIs:</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>KPI</th>
+            <th>3 points</th>
+            <th>2 points</th>
+            <th>1 point</th>
+            <th>0 points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>NPS</strong> <span class="num">(CSAT area)</span></td>
+            <td><span class="pill pill-green">≥ 60</span></td>
+            <td><span class="pill pill-amber">45 – 59</span></td>
+            <td><span class="pill pill-amber">30 – 44</span></td>
+            <td><span class="pill pill-red">&lt; 30</span></td>
+          </tr>
+          <tr>
+            <td><strong>Google reviews</strong> <span class="num">(CSAT area)</span></td>
+            <td><span class="pill pill-green">≥ 4.4</span></td>
+            <td><span class="pill pill-amber">4.0 – 4.3</span></td>
+            <td><span class="pill pill-amber">3.5 – 3.9</span></td>
+            <td><span class="pill pill-red">&lt; 3.5</span></td>
+          </tr>
+          <tr>
+            <td><strong>Sales vs target</strong> <span class="num">(Economic area)</span></td>
+            <td><span class="pill pill-green">≥ 103%</span></td>
+            <td><span class="pill pill-amber">98 – 102%</span></td>
+            <td><span class="pill pill-amber">93 – 97%</span></td>
+            <td><span class="pill pill-red">&lt; 93%</span></td>
+          </tr>
+          <tr>
+            <td><strong>Internal audit</strong> <span class="num">(Know-how area)</span></td>
+            <td><span class="pill pill-green">≥ 90/100</span></td>
+            <td><span class="pill pill-amber">80 – 89</span></td>
+            <td><span class="pill pill-amber">70 – 79</span></td>
+            <td><span class="pill pill-red">&lt; 70</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lede" style="margin-top:16px">Area score = sum of KPI points, normalised to 100.
+    Final score = weighted sum of the three areas (30 / 40 / 30).</p>
+  </div>
+</section>
+
+<section class="proj-section">
+  <div class="wrap">
+    <h2>Output — network ranking</h2>
+    <p class="lede">Example of the monthly output: top and bottom stores by composite
+    score, with the area breakdown that explains <em>why</em> a store ranks where it does.
+    Store names are anonymised.</p>
+    <div class="rank-grid">
+      <div class="rank-col top">
+        <h3>Top performers</h3>
+        <div class="tbl-wrap">
+          <table style="min-width:0">
+            <thead>
+              <tr><th>#</th><th>Store</th><th>CSAT</th><th>Econ</th><th>Know-how</th><th>Score</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="num">1</td><td><strong>Store 047</strong></td><td class="num">92</td><td class="num">88</td><td class="num">95</td><td><span class="pill pill-green">91.1</span></td></tr>
+              <tr><td class="num">2</td><td><strong>Store 112</strong></td><td class="num">85</td><td class="num">94</td><td class="num">86</td><td><span class="pill pill-green">89.2</span></td></tr>
+              <tr><td class="num">3</td><td><strong>Store 023</strong></td><td class="num">90</td><td class="num">84</td><td class="num">91</td><td><span class="pill pill-green">87.9</span></td></tr>
+              <tr><td class="num">4</td><td><strong>Store 156</strong></td><td class="num">83</td><td class="num">90</td><td class="num">85</td><td><span class="pill pill-green">86.4</span></td></tr>
+              <tr><td class="num">5</td><td><strong>Store 008</strong></td><td class="num">88</td><td class="num">82</td><td class="num">88</td><td><span class="pill pill-green">85.6</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="rank-col bottom">
+        <h3>Bottom performers</h3>
+        <div class="tbl-wrap">
+          <table style="min-width:0">
+            <thead>
+              <tr><th>#</th><th>Store</th><th>CSAT</th><th>Econ</th><th>Know-how</th><th>Score</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="num">178</td><td><strong>Store 094</strong></td><td class="num">51</td><td class="num">58</td><td class="num">49</td><td><span class="pill pill-red">53.3</span></td></tr>
+              <tr><td class="num">179</td><td><strong>Store 131</strong></td><td class="num">48</td><td class="num">55</td><td class="num">50</td><td><span class="pill pill-red">51.4</span></td></tr>
+              <tr><td class="num">180</td><td><strong>Store 067</strong></td><td class="num">55</td><td class="num">46</td><td class="num">48</td><td><span class="pill pill-red">49.3</span></td></tr>
+              <tr><td class="num">181</td><td><strong>Store 149</strong></td><td class="num">44</td><td class="num">52</td><td class="num">45</td><td><span class="pill pill-red">47.5</span></td></tr>
+              <tr><td class="num">182</td><td><strong>Store 102</strong></td><td class="num">41</td><td class="num">47</td><td class="num">44</td><td><span class="pill pill-red">44.3</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub">Score distribution across the network</h3>
+    <div class="bars" role="img" aria-label="Distribution of stores by score band">
+      <div class="bar-row"><span>Excellent (80–100)</span><div class="track"><div class="fill" style="width:24%"></div></div><span class="val">21 stores</span></div>
+      <div class="bar-row"><span>Good (65–79)</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">86 stores</span></div>
+      <div class="bar-row"><span>Average (50–64)</span><div class="track"><div class="fill" style="width:70%"></div></div><span class="val">61 stores</span></div>
+      <div class="bar-row neg"><span>Critical (&lt; 50)</span><div class="track"><div class="fill" style="width:16%"></div></div><span class="val">14 stores</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="proj-section">
+  <div class="wrap">
+    <h2>Impact</h2>
+    <div class="takeaways">
+      <div class="takeaway">The ranking changed the conversation: several "top sellers" turned out to be weak on CSAT and know-how, while smaller stores with excellent operations became visible for the first time.</div>
+      <div class="takeaway">Bottom-quartile stores get a structured action plan per weak area (e.g. low know-how → targeted training), and their score trajectory is tracked month over month.</div>
+      <div class="takeaway">Because scoring is threshold-based and transparent, store managers can see exactly which KPI to move to gain points — the framework became a self-service improvement tool, not just a report.</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap proj-nav">
+  <a href="customer-segmentation.html">← Prev: Customer segmentation</a>
+  <a href="../index.html#projects">All projects →</a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Alessio Panetta</span>
+    <span>Senior Data Analytics &amp; AI</span>
+  </div>
+</footer>
+
+</body>
+</html>

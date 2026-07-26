@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Segmentation — Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="../index.html">Alessio Panetta</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="proj-header">
+  <div class="wrap">
+    <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#projects">Projects</a> / Customer segmentation</p>
+    <p class="eyebrow">Customer · Segmentation &amp; CRM</p>
+    <h1>From transactions to actionable clusters — and a marketing playbook</h1>
+    <p class="proj-summary">
+      One-size-fits-all CRM campaigns were losing effectiveness. Starting from raw
+      transaction data, I built a behavioral segmentation that groups customers into
+      five clusters the marketing team can actually name, understand and target —
+      each with its own strategy.
+    </p>
+    <div class="proj-meta">
+      <div class="meta-item">
+        <div class="fact-k">Data</div>
+        <div class="fact-v">24 months of transactions · loyalty card base</div>
+      </div>
+      <div class="meta-item">
+        <div class="fact-k">Methods</div>
+        <div class="fact-v">Extended RFM features · K-Means · silhouette validation</div>
+      </div>
+      <div class="meta-item">
+        <div class="fact-k">Stack</div>
+        <div class="fact-v">Python · scikit-learn · SQL · Tableau</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="proj-section">
+  <div class="wrap">
+    <h2>Approach</h2>
+    <p class="lede">The key choice was the feature set: beyond classic RFM (recency,
+    frequency, monetary), I added behavioral dimensions — basket composition, category
+    breadth, promo sensitivity, preferred day/time — so clusters describe <em>how</em>
+    people shop, not just how much.</p>
+    <div class="pipeline">
+      <div class="pipe-step">
+        <strong>Feature engineering</strong>
+        <span>RFM + basket size, category breadth, promo share, visit patterns per customer.</span>
+      </div>
+      <div class="pipe-step">
+        <strong>Preprocessing</strong>
+        <span>Outlier treatment, log transforms, standardisation.</span>
+      </div>
+      <div class="pipe-step">
+        <strong>Clustering</strong>
+        <span>K-Means; k selected via silhouette score and business interpretability.</span>
+      </div>
+      <div class="pipe-step">
+        <strong>Profiling</strong>
+        <span>Each cluster described with stats, personas and value contribution.</span>
+      </div>
+      <div class="pipe-step">
+        <strong>Activation</strong>
+        <span>Cluster labels pushed to the CRM weekly; strategies co-designed with marketing.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proj-section">
+  <div class="wrap">
+    <h2>Output 1 — The five clusters</h2>
+    <p class="lede">Example output: each segment with its share of the base, key stats,
+    and the marketing strategy attached to it. Names were chosen with the marketing
+    team — a cluster nobody can name is a cluster nobody will use.</p>
+
+    <div class="clusters">
+
+      <div class="cluster">
+        <div class="cluster-top">
+          <h3>Ambassadors</h3>
+          <span class="share">8% of base · 31% of revenue</span>
+        </div>
+        <p class="traits">Very frequent, high-spend, wide category breadth, low promo dependency. The brand's true fans.</p>
+        <div class="stats">
+          <div class="stat"><b>€142</b><span>avg monthly spend</span></div>
+          <div class="stat"><b>6.2</b><span>visits / month</span></div>
+          <div class="stat"><b>12%</b><span>promo share</span></div>
+        </div>
+        <p class="strategy"><strong>Strategy — reward &amp; amplify</strong>
+        VIP tier with exclusive previews and services (not discounts — they don't need
+        them). Referral program: turn advocacy into acquisition. Protect at all costs:
+        churn alerts with priority follow-up.</p>
+      </div>
+
+      <div class="cluster">
+        <div class="cluster-top">
+          <h3>Loyal routiners</h3>
+          <span class="share">22% of base · 34% of revenue</span>
+        </div>
+        <p class="traits">Regular weekly shop, stable basket, mid spend, habit-driven. The backbone of the business.</p>
+        <div class="stats">
+          <div class="stat"><b>€89</b><span>avg monthly spend</span></div>
+          <div class="stat"><b>4.1</b><span>visits / month</span></div>
+          <div class="stat"><b>21%</b><span>promo share</span></div>
+        </div>
+        <p class="strategy"><strong>Strategy — grow the basket</strong>
+        Cross-sell into categories they don't buy yet (personalised recommendations).
+        Missions-based offers ("complete your weekly shop"). Avoid over-discounting
+        what they already buy at full price.</p>
+      </div>
+
+      <div class="cluster">
+        <div class="cluster-top">
+          <h3>Deal seekers</h3>
+          <span class="share">18% of base · 15% of revenue</span>
+        </div>
+        <p class="traits">Shop mainly on promotion, cherry-pick offers, spike during campaigns, quiet otherwise.</p>
+        <div class="stats">
+          <div class="stat"><b>€54</b><span>avg monthly spend</span></div>
+          <div class="stat"><b>2.8</b><span>visits / month</span></div>
+          <div class="stat"><b>58%</b><span>promo share</span></div>
+        </div>
+        <p class="strategy"><strong>Strategy — convert to habit</strong>
+        Personalised offers on non-promo categories, gamified challenges (streaks,
+        points multipliers) to increase frequency. Measure incrementality carefully —
+        avoid subsidising purchases that would happen anyway.</p>
+      </div>
+
+      <div class="cluster">
+        <div class="cluster-top">
+          <h3>Occasional shoppers</h3>
+          <span class="share">37% of base · 14% of revenue</span>
+        </div>
+        <p class="traits">Infrequent visits, small baskets, narrow category range. Convenience-driven, low engagement.</p>
+        <div class="stats">
+          <div class="stat"><b>€28</b><span>avg monthly spend</span></div>
+          <div class="stat"><b>1.2</b><span>visits / month</span></div>
+          <div class="stat"><b>33%</b><span>promo share</span></div>
+        </div>
+        <p class="strategy"><strong>Strategy — activate a second visit</strong>
+        Welcome-back journeys, time-boxed "come back within 14 days" incentives,
+        app onboarding push. Success metric: share moving to ≥2 visits/month —
+        not campaign redemption alone.</p>
+      </div>
+
+      <div class="cluster">
+        <div class="cluster-top">
+          <h3>At-risk / fading</h3>
+          <span class="share">15% of base · 6% of revenue</span>
+        </div>
+        <p class="traits">Were regulars, now declining recency and frequency. Early churn signals visible in the data.</p>
+        <div class="stats">
+          <div class="stat"><b>€19</b><span>avg monthly spend</span></div>
+          <div class="stat"><b>0.6</b><span>visits / month</span></div>
+          <div class="stat"><b>−41%</b><span>spend vs 6m ago</span></div>
+        </div>
+        <p class="strategy"><strong>Strategy — win back, then learn</strong>
+        Two-step win-back flow: strong personalised offer, then a "why did you leave?"
+        micro-survey for non-responders. Feedback loops into the Voice of Customer
+        program. Cap investment: not every customer is worth saving.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="proj-section">
+  <div class="wrap">
+    <h2>Output 2 — Value concentration</h2>
+    <p class="lede">The classic message that lands with executives: 30% of customers
+    (Ambassadors + Loyal routiners) generate 65% of revenue. Retention on these two
+    clusters is worth more than acquisition anywhere else.</p>
+    <div class="bars" role="img" aria-label="Revenue share by cluster">
+      <div class="bar-row"><span>Loyal routiners</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">34%</span></div>
+      <div class="bar-row"><span>Ambassadors</span><div class="track"><div class="fill" style="width:91%"></div></div><span class="val">31%</span></div>
+      <div class="bar-row"><span>Deal seekers</span><div class="track"><div class="fill" style="width:44%"></div></div><span class="val">15%</span></div>
+      <div class="bar-row"><span>Occasional shoppers</span><div class="track"><div class="fill" style="width:41%"></div></div><span class="val">14%</span></div>
+      <div class="bar-row"><span>At-risk / fading</span><div class="track"><div class="fill" style="width:18%"></div></div><span class="val">6%</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="proj-section">
+  <div class="wrap">
+    <h2>Impact</h2>
+    <div class="takeaways">
+      <div class="takeaway">The marketing team moved from one generic weekly newsletter to five differentiated journeys, one per cluster, with content and incentives designed around each segment's behavior.</div>
+      <div class="takeaway">Cluster membership became a shared language across teams — campaign briefs, media plans and store communications all reference the same five segments.</div>
+      <div class="takeaway">Segments are refreshed weekly and monitored for migration: the share of customers moving "up" (e.g. Occasional → Loyal) is now a standing KPI of CRM effectiveness.</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap proj-nav">
+  <a href="voice-of-customer.html">← Prev: Voice of Customer</a>
+  <a href="store-performance.html">Next: Store performance →</a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Alessio Panetta</span>
+    <span>Senior Data Analytics &amp; AI</span>
+  </div>
+</footer>
+
+</body>
+</html>

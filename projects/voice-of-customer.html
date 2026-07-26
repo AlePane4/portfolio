@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice of Customer — Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="../index.html">Alessio Panetta</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="proj-header">
+  <div class="wrap">
+    <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#projects">Projects</a> / Voice of Customer</p>
+    <p class="eyebrow">Customer Experience · NLP &amp; GenAI</p>
+    <h1>Voice of Customer — mining 50,000+ verbatims for a car delivery service</h1>
+    <p class="proj-summary">
+      Open-text feedback is where customers explain the <em>why</em> behind the scores —
+      but nobody can read thousands of comments. I built an NLP + GenAI pipeline that
+      turns raw verbatims into a journey-level synthesis of pain points and strengths,
+      used to prioritise the CX roadmap.
+    </p>
+    <div class="proj-meta">
+      <div class="meta-item">
+        <div class="fact-k">Data</div>
+        <div class="fact-v">50K+ verbatims · surveys, app reviews, support notes</div>
+      </div>
+      <div class="meta-item">
+        <div class="fact-k">Methods</div>
+        <div class="fact-v">Embeddings, topic modelling (BERTopic + Louvain), sentiment, LLM synthesis</div>
+      </div>
+      <div class="meta-item">
+        <div class="fact-k">Stack</div>
+        <div class="fact-v">Python · BERTopic · LLM API · Power BI</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="proj-section">
+  <div class="wrap">
+    <h2>Approach</h2>
+    <p class="lede">A five-step pipeline, with the LLM used at the end — for synthesis and
+    labelling — on top of a solid, reproducible NLP foundation. Every AI-generated
+    insight is traceable back to the underlying verbatims.</p>
+    <div class="pipeline">
+      <div class="pipe-step">
+        <strong>Collect &amp; clean</strong>
+        <span>Merge sources, deduplicate, remove PII, language detection and translation.</span>
+      </div>
+      <div class="pipe-step">
+        <strong>Embed</strong>
+        <span>Sentence embeddings to represent each verbatim in semantic space.</span>
+      </div>
+      <div class="pipe-step">
+        <strong>Topic modelling</strong>
+        <span>BERTopic clustering + Louvain community detection on the verbatim similarity graph → 24 granular topics, merged into 9 business themes.</span>
+      </div>
+      <div class="pipe-step">
+        <strong>Sentiment &amp; journey tagging</strong>
+        <span>Each verbatim scored for sentiment and mapped to a journey stage.</span>
+      </div>
+      <div class="pipe-step">
+        <strong>GenAI synthesis</strong>
+        <span>LLM summarises each topic × stage cell into plain-language insights, with representative quotes.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proj-section">
+  <div class="wrap">
+    <h2>Output 1 — What customers talk about</h2>
+    <p class="lede">Share of verbatims by theme. Delivery scheduling and communication
+    dominate the conversation — and carry the most negative sentiment.</p>
+    <div class="bars" role="img" aria-label="Topic distribution across verbatims">
+      <div class="bar-row neg"><span>Scheduling &amp; time windows</span><div class="track"><div class="fill" style="width:88%"></div></div><span class="val">22%</span></div>
+      <div class="bar-row neg"><span>Driver arrival notifications</span><div class="track"><div class="fill" style="width:64%"></div></div><span class="val">16%</span></div>
+      <div class="bar-row"><span>Driver courtesy &amp; handover</span><div class="track"><div class="fill" style="width:56%"></div></div><span class="val">14%</span></div>
+      <div class="bar-row"><span>Vehicle condition on arrival</span><div class="track"><div class="fill" style="width:48%"></div></div><span class="val">12%</span></div>
+      <div class="bar-row neg"><span>Paperwork &amp; digital signature</span><div class="track"><div class="fill" style="width:40%"></div></div><span class="val">10%</span></div>
+      <div class="bar-row"><span>Real-time tracking</span><div class="track"><div class="fill" style="width:36%"></div></div><span class="val">9%</span></div>
+      <div class="bar-row neg"><span>Rescheduling &amp; cancellations</span><div class="track"><div class="fill" style="width:32%"></div></div><span class="val">8%</span></div>
+      <div class="bar-row"><span>Booking experience</span><div class="track"><div class="fill" style="width:24%"></div></div><span class="val">6%</span></div>
+      <div class="bar-row neg"><span>Post-delivery support</span><div class="track"><div class="fill" style="width:12%"></div></div><span class="val">3%</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="proj-section">
+  <div class="wrap">
+    <h2>Output 2 — Who talks about what</h2>
+    <p class="lede">A bipartite graph linking customer segments to the topics they discuss.
+    Edge thickness = volume of verbatims, colour = dominant sentiment. First-time buyers
+    drive the scheduling complaints, while business clients are the ones stuck on paperwork.
+    Hover an edge for details.</p>
+    <div class="graph-wrap">
+      <svg class="vograph" viewBox="0 0 760 430" role="img" aria-label="Network graph linking customer segments to discussion topics">
+        <text class="g-col" x="170" y="28" text-anchor="end">Segments</text>
+        <text class="g-col" x="590" y="28">Topics</text>
+
+        <!-- edges -->
+        <path class="g-edge neg" stroke-width="6"   d="M192,80  C 380,80  380,55  568,55"><title>First-time buyers → Scheduling &amp; time windows · 6.8K verbatims · mostly negative</title></path>
+        <path class="g-edge pos" stroke-width="4"   d="M192,80  C 380,80  380,185 568,185"><title>First-time buyers → Driver courtesy &amp; handover · 4.1K verbatims · mostly positive</title></path>
+        <path class="g-edge pos" stroke-width="3"   d="M192,80  C 380,80  380,380 568,380"><title>First-time buyers → Real-time tracking · 2.9K verbatims · mostly positive</title></path>
+        <path class="g-edge neg" stroke-width="4.5" d="M192,175 C 380,175 380,120 568,120"><title>Returning customers → Arrival notifications · 4.6K verbatims · mostly negative</title></path>
+        <path class="g-edge neg" stroke-width="3"   d="M192,175 C 380,175 380,55  568,55"><title>Returning customers → Scheduling &amp; time windows · 2.8K verbatims · mostly negative</title></path>
+        <path class="g-edge pos" stroke-width="3"   d="M192,175 C 380,175 380,250 568,250"><title>Returning customers → Vehicle condition · 3.1K verbatims · mostly positive</title></path>
+        <path class="g-edge neg" stroke-width="4"   d="M192,270 C 380,270 380,315 568,315"><title>Business &amp; fleet → Paperwork &amp; signature · 3.4K verbatims · mostly negative</title></path>
+        <path class="g-edge neg" stroke-width="2.5" d="M192,270 C 380,270 380,55  568,55"><title>Business &amp; fleet → Scheduling &amp; time windows · 1.9K verbatims · mostly negative</title></path>
+        <path class="g-edge neg" stroke-width="2"   d="M192,270 C 380,270 380,120 568,120"><title>Business &amp; fleet → Arrival notifications · 1.6K verbatims · mostly negative</title></path>
+        <path class="g-edge pos" stroke-width="2.5" d="M192,355 C 380,355 380,185 568,185"><title>Gift &amp; family orders → Driver courtesy &amp; handover · 1.8K verbatims · mostly positive</title></path>
+        <path class="g-edge pos" stroke-width="2"   d="M192,355 C 380,355 380,250 568,250"><title>Gift &amp; family orders → Vehicle condition · 1.4K verbatims · mostly positive</title></path>
+
+        <!-- segment nodes -->
+        <circle class="g-user" cx="185" cy="80" r="7"/>
+        <text x="170" y="78" text-anchor="end">First-time buyers</text>
+        <text class="g-sub" x="170" y="92" text-anchor="end">42% of verbatims</text>
+        <circle class="g-user" cx="185" cy="175" r="7"/>
+        <text x="170" y="173" text-anchor="end">Returning customers</text>
+        <text class="g-sub" x="170" y="187" text-anchor="end">31% of verbatims</text>
+        <circle class="g-user" cx="185" cy="270" r="7"/>
+        <text x="170" y="268" text-anchor="end">Business &amp; fleet</text>
+        <text class="g-sub" x="170" y="282" text-anchor="end">18% of verbatims</text>
+        <circle class="g-user" cx="185" cy="355" r="7"/>
+        <text x="170" y="353" text-anchor="end">Gift &amp; family orders</text>
+        <text class="g-sub" x="170" y="367" text-anchor="end">9% of verbatims</text>
+
+        <!-- topic nodes -->
+        <circle class="g-topic" cx="575" cy="55" r="6"/>
+        <text x="590" y="59">Scheduling &amp; time windows</text>
+        <circle class="g-topic" cx="575" cy="120" r="6"/>
+        <text x="590" y="124">Arrival notifications</text>
+        <circle class="g-topic" cx="575" cy="185" r="6"/>
+        <text x="590" y="189">Driver courtesy &amp; handover</text>
+        <circle class="g-topic" cx="575" cy="250" r="6"/>
+        <text x="590" y="254">Vehicle condition</text>
+        <circle class="g-topic" cx="575" cy="315" r="6"/>
+        <text x="590" y="319">Paperwork &amp; signature</text>
+        <circle class="g-topic" cx="575" cy="380" r="6"/>
+        <text x="590" y="384">Real-time tracking</text>
+      </svg>
+      <div class="graph-legend">
+        <span class="pos"><i></i>mostly positive mentions</span>
+        <span class="neg"><i></i>mostly negative mentions</span>
+        <span>thickness = volume of verbatims</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proj-section">
+  <div class="wrap">
+    <h2>Output 3 — Sentiment along the customer journey</h2>
+    <p class="lede">Each verbatim is mapped to one of five journey stages. Green = share of
+    positive mentions, red = negative. The journey starts strong, dips hard at
+    scheduling, and recovers at the moment of delivery.</p>
+    <div class="journey">
+      <div class="j-stage">
+        <div class="j-name">1 · Booking</div>
+        <div class="j-bar j-pos"><i style="width:78%"></i></div>
+        <div class="j-bar j-neg"><i style="width:22%"></i></div>
+        <div class="j-score">78% positive</div>
+        <p class="j-note">Smooth online flow; pricing seen as transparent.</p>
+      </div>
+      <div class="j-stage">
+        <div class="j-name">2 · Scheduling</div>
+        <div class="j-bar j-pos"><i style="width:34%"></i></div>
+        <div class="j-bar j-neg"><i style="width:66%"></i></div>
+        <div class="j-score">66% negative</div>
+        <p class="j-note">Main friction point: broad time windows, poor reschedule flow.</p>
+      </div>
+      <div class="j-stage">
+        <div class="j-name">3 · Delivery day</div>
+        <div class="j-bar j-pos"><i style="width:52%"></i></div>
+        <div class="j-bar j-neg"><i style="width:48%"></i></div>
+        <div class="j-score">Mixed</div>
+        <p class="j-note">Tracking loved when it works; arrival alerts often late.</p>
+      </div>
+      <div class="j-stage">
+        <div class="j-name">4 · Handover</div>
+        <div class="j-bar j-pos"><i style="width:81%"></i></div>
+        <div class="j-bar j-neg"><i style="width:19%"></i></div>
+        <div class="j-score">81% positive</div>
+        <p class="j-note">Drivers are the brand's best asset; paperwork the only drag.</p>
+      </div>
+      <div class="j-stage">
+        <div class="j-name">5 · Post-delivery</div>
+        <div class="j-bar j-pos"><i style="width:45%"></i></div>
+        <div class="j-bar j-neg"><i style="width:55%"></i></div>
+        <div class="j-score">55% negative</div>
+        <p class="j-note">Low volume, but issues (missing docs, follow-up) go unresolved.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proj-section">
+  <div class="wrap">
+    <h2>Output 4 — GenAI synthesis: pain points vs what works</h2>
+    <p class="lede">Example of the executive one-pager generated by the pipeline: the top
+    pain points and strengths, each with its share of mentions and a plain-language
+    summary written by the LLM and validated by a human.</p>
+    <div class="insight-grid">
+      <div class="insight pain">
+        <div class="insight-head">Top pain points</div>
+        <ul>
+          <li>
+            <strong>4-hour delivery windows are too broad</strong>
+            <span>Customers must block half a day off work; the #1 driver of detractor scores.</span>
+            <span class="share">↳ 19% of negative mentions</span>
+          </li>
+          <li>
+            <strong>Arrival notifications come too late</strong>
+            <span>"Driver is arriving" alerts often fire under 10 minutes before arrival.</span>
+            <span class="share">↳ 14% of negative mentions</span>
+          </li>
+          <li>
+            <strong>Rescheduling requires calling support</strong>
+            <span>No self-service reschedule in app; long hold times amplify frustration.</span>
+            <span class="share">↳ 11% of negative mentions</span>
+          </li>
+          <li>
+            <strong>Paper-based handover documents</strong>
+            <span>Signing physical forms feels outdated and slows down an otherwise great moment.</span>
+            <span class="share">↳ 8% of negative mentions</span>
+          </li>
+        </ul>
+      </div>
+      <div class="insight gain">
+        <div class="insight-head">What works</div>
+        <ul>
+          <li>
+            <strong>Drivers are courteous and well-prepared</strong>
+            <span>Named praise for drivers is the single most frequent positive theme.</span>
+            <span class="share">↳ 24% of positive mentions</span>
+          </li>
+          <li>
+            <strong>Cars arrive clean and as described</strong>
+            <span>Condition on arrival consistently matches or exceeds expectations.</span>
+            <span class="share">↳ 18% of positive mentions</span>
+          </li>
+          <li>
+            <strong>Live map tracking builds trust</strong>
+            <span>When tracking works, customers describe the wait as "stress-free".</span>
+            <span class="share">↳ 15% of positive mentions</span>
+          </li>
+          <li>
+            <strong>Transparent booking &amp; pricing</strong>
+            <span>No hidden fees; booking flow described as fast and clear.</span>
+            <span class="share">↳ 12% of positive mentions</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub">Representative verbatims (anonymised)</h3>
+    <div class="quotes">
+      <div class="quote neg">
+        <p>"The car itself was perfect, but I waited at home for four hours. A one-hour window would change everything."</p>
+        <footer>Post-delivery survey · Scheduling</footer>
+      </div>
+      <div class="quote">
+        <p>"The driver called me, explained every document, and even walked me through the car's features. Ten out of ten."</p>
+        <footer>App review · Handover</footer>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proj-section">
+  <div class="wrap">
+    <h2>Impact</h2>
+    <div class="takeaways">
+      <div class="takeaway">The journey map reframed the CX roadmap: investment shifted from the booking flow (already strong) to scheduling and notifications, where two thirds of negative feedback concentrated.</div>
+      <div class="takeaway">Reading time for the CX team dropped from days of manual tagging per wave to an automated refresh, with every insight traceable to source verbatims.</div>
+      <div class="takeaway">The framework is reusable: same pipeline, new data source — it was later extended to call-centre transcripts with no structural changes.</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap proj-nav">
+  <a href="../index.html#projects">← All projects</a>
+  <a href="customer-segmentation.html">Next: Customer segmentation →</a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Alessio Panetta</span>
+    <span>Senior Data Analytics &amp; AI</span>
+  </div>
+</footer>
+
+</body>
+</html>
