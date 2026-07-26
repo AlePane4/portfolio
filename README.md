@@ -1,48 +1,29 @@
-# Data Science Portfolio — Retail Analytics
+# Alessio Panetta — Data Analytics & AI Portfolio
 
-A minimal, elegant portfolio website for a data scientist working in retail
-(sales, marketing, customer behavior). Pure HTML/CSS — no build step, no
-dependencies. Open `index.html` in a browser and it just works.
+Personal portfolio where I collect a selection of my data science projects,
+focused on retail and customer analytics.
 
-## Structure
+**Live site → [alepane4.github.io/portfolio](https://alepane4.github.io/portfolio/)**
 
-```
-portfolio/
-├── index.html                       # Home: hero, projects, skills, about, contact
-├── css/
-│   └── style.css                    # All styles (shared by every page)
-├── js/                              # (empty — add scripts here if needed)
-├── projects/
-│   ├── voice-of-customer.html       # Case study 1: VoC / NLP / GenAI
-│   ├── customer-segmentation.html   # Case study 2: clustering + marketing playbook
-│   └── store-performance.html       # Case study 3: KPI scoring & store ranking
-└── README.md
-```
+I'm a data professional with 5+ years of experience in Data Analytics and Data
+Science, working end-to-end from data preparation to insight generation and
+visualization. Master in Data Science at University of Milano-Bicocca, based in
+Milan.
 
-## How to edit
+## Projects
 
-1. Open the folder in VS Code (`File → Open Folder`).
-2. Search for `✏️ EDIT` comments in `index.html` — replace name, intro, skills,
-   about section and contact links with your own.
-3. In each project page, adjust numbers, quotes and takeaways to reflect your
-   real projects (current figures are realistic placeholders).
-4. To preview locally, right-click `index.html` → *Open with Live Server*
-   (install the "Live Server" VS Code extension), or simply double-click the file.
+| Project | What it is | Stack |
+|---|---|---|
+| [Voice of Customer](https://alepane4.github.io/portfolio/projects/voice-of-customer.html) | NLP + GenAI pipeline mining 50K+ open-text verbatims: topic modelling (BERTopic + Louvain), sentiment, journey mapping and LLM synthesis | Python, BERTopic, LLM API |
+| [Customer segmentation](https://alepane4.github.io/portfolio/projects/customer-segmentation.html) | Transaction-based behavioral clustering with a concrete marketing playbook per segment | Python, scikit-learn, SQL |
+| [Store performance](https://alepane4.github.io/portfolio/projects/store-performance.html) | Composite KPI scoring & ranking framework for a large grocery chain | SQL, Python, Power BI |
 
-## How to add a new project
+## About the site
 
-1. Duplicate one of the files in `projects/`.
-2. Add a new `<a class="card">…</a>` block in the Projects section of `index.html`
-   pointing to it.
+Hand-written HTML and CSS, no frameworks and no build step — clone it and open
+`index.html` in a browser. Hosted on GitHub Pages.
 
-## How to publish (free options)
+## Contact
 
-- **GitHub Pages**: push this folder to a repo → Settings → Pages → deploy from
-  branch `main`, root folder. Your site will be at `https://username.github.io/repo`.
-- **Netlify / Vercel**: drag & drop the folder in their dashboard. Done.
-
-## Design tokens
-
-- Palette: paper `#FBFAF7`, ink `#14181D`, petrol `#0E5E56` (accent),
-  amber/red for warning/negative states.
-- Type: Newsreader (display), Instrument Sans (body), IBM Plex Mono (data/labels).
+- LinkedIn: [linkedin.com/in/alessiopanetta](https://www.linkedin.com/in/alessiopanetta/)
+- Email: panetta.alep@gmail.com
